@@ -1,5 +1,5 @@
 # projet_ardouin
-<img src="logo-SHD.png" alt="logo" width="150" height="100" />
+<img src="logo-SHD.png" alt="logo" width="150" height="100" style = "style="float: right;"/>
 ## Description 
 Dans le cadre de mon stage de master d'humanités numériques, je participe à un travail de harmonisation, de fluidification et de remaniement du projet des [tables ardouin](https://www.servicehistorique.sga.defense.gouv.fr/ressources/les-tables-ardouin) porté par le SHD de Rochefort.  
 
