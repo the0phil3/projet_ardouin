@@ -1,0 +1,8 @@
+#This is my git ignore file
+.DS_Store
+.env
+.env.example
+.env.local
+.env.staging
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
