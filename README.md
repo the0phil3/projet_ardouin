@@ -16,7 +16,7 @@ Les tables ardouin sont un index fait par le docteur Ardouin, un ancien officier
 
 ## Attentes
 J'espère pouvoir effectuer ces améliorations ou au moins établir une méthodologie pour y arriver : 
-- transformation d'excel en base de données `sqlite`
+- transformation d'excel en base de données `sqlite` qui pourrait être lu par libre office base
 - encodage de cette base en `xml ead` 
 - faire le lien entre l'entrée de l'index et le microfilm numérisé
 - essayer de lématiser et normaliser les entrées afin de favoriser des requêtes profondes et efficaces 
