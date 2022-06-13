@@ -1,4 +1,4 @@
-import xlrd, sqlite3, pandas as pd, numpy as np
+import xlrd, sqlite3, pandas as pd, numpy as np, os
 from datetime import datetime, timedelta
 from sqlite3 import OperationalError
 
@@ -31,7 +31,7 @@ def Type_column(dataframe, categorie):
         dataframe["type"] = "A"
     return dataframe
 
-def AddID(dataframe):
+def NomID(dataframe):
     person = dataframe['type'] == "P"
     boat = dataframe['type'] == "B"
     affaires = dataframe['type'] == "A"
@@ -49,7 +49,12 @@ def AddID(dataframe):
     
     return dataframe
 
-def Clean_concat(*dataframes):
+def ContenuID(dataframe):
+    dataframe['cID'] = dataframe.groupby(['nom', 'contenu', 'page', 'dateD', 'dateF']).ngroup()
+    
+    return dataframe
+
+def Master_concat(*dataframes):
     unwantedcol = ['masque', 'page','contenu', 'tome', 'f1', 'f2', 'f3', 'f4',
        'f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12', 'f13', 'f14', 'f15',
        'f16', 'f17', 'f18', 'f19', 'f20', 'f21', 'f22', 'f23', 'f24', 'f25',
@@ -57,10 +62,35 @@ def Clean_concat(*dataframes):
     for dataframe in dataframes:
         dataframe = dataframe.drop(unwantedcol, inplace=True, axis=1)
         
-    master = pd.concat([*dataframes])
-    master = master.drop_duplicates(subset=['nom', 'type'], keep='first')
+    final = pd.concat([*dataframes])
+    final = final.drop_duplicates(subset=['nom', 'type', 'ID'], keep='first')
+    return final
+
+def Contenu_concat(*dataframes):
+    unwantedcol = ['masque', 'tome', 'f1', 'f2', 'f3', 'f4',
+       'f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12', 'f13', 'f14', 'f15',
+       'f16', 'f17', 'f18', 'f19', 'f20', 'f21', 'f22', 'f23', 'f24', 'f25',
+       'sserie', 'serie', 'ssserie', 'atl', 'mf', 'type']
+    for dataframe in dataframes:
+        dataframe = dataframe.drop(unwantedcol, inplace=True, axis=1)
+        
+    final = pd.concat([*dataframes])
+    final = final.drop_duplicates(subset=['nom', 'contenu', 'page', 'dateD', 'dateF'], keep='first')  
+    return final
     
-    return master
+def Archive_concat(*dataframes):
+    unwantedcol = ['contenu','masque', 'type', 'nom', 'page','dateD', 'dateF']
+    for dataframe in dataframes:
+        dataframe = dataframe.drop(unwantedcol, inplace=True, axis=1)
+        
+    final = pd.concat([*dataframes])
+    final = final.drop_duplicates(subset=['tome', 'f1', 'f2', 'f3', 'f4',
+       'f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12', 'f13', 'f14', 'f15',
+       'f16', 'f17', 'f18', 'f19', 'f20', 'f21', 'f22', 'f23', 'f24', 'f25',
+       'sserie', 'serie', 'ssserie', 'atl', 'mf'], keep='first')
+    return final
+
+
     
     
     
