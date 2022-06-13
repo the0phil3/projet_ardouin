@@ -8,7 +8,7 @@
 
 **Ardouin La Totale.xls** --> l'intégralité des tables ardouin transcrites en excel 
 
-**xml_original --> les fiches originales en xml ead qui sont utilisées sur le site du SHD
+**xml_original** --> les fiches originales en xml ead qui sont utilisées sur le site du SHD
 
 
 ## Description 
