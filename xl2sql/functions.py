@@ -1,11 +1,10 @@
-import pandas as pd
-import xlrd
-import sqlite3
+import xlrd, sqlite3, pandas as pd, numpy as np
+from datetime import datetime, timedelta
 
 def xlopen(sheetname):
     sheetname = pd.read_excel('~/dev/projet_ardouin/Ardouin La Totale.xls', sheetname, header=0)
     
-    return sheetname.head()
+    return sheetname
 
 def xlclean(dataframe):
     dataframe.columns = [x.replace('Folio ','f') for x in dataframe.columns]
@@ -18,6 +17,7 @@ def xlclean(dataframe):
                                'Date début':'dateD', 'Date fin':'dateF',},inplace=True)
     dataframe.dateD = pd.to_datetime(dataframe.dateD, format='%Y')
     dataframe.dateF = pd.to_datetime(dataframe.dateF, format='%Y')
-    
-    return dataframe.head()
+    dataframe.dateF = dataframe.dateF.apply(lambda x: datetime(x.year, 12, 31))
+        
+    return dataframe
 
