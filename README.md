@@ -8,6 +8,8 @@
 
 **Ardouin La Totale.xls** --> l'intégralité des tables ardouin transcrites en excel 
 
+**xml_original --> les fiches originales en xml ead qui sont utilisées sur le site du SHD
+
 
 ## Description 
 Dans le cadre de mon stage de master d'humanités numériques, je participe à un travail de harmonisation, de fluidification et de remaniement du projet des [tables ardouin](https://www.servicehistorique.sga.defense.gouv.fr/ressources/les-tables-ardouin) porté par le SHD de Rochefort.  
