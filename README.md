@@ -1,4 +1,4 @@
-# <img src="logo-SHD.png" alt="logo" width="150" height="100"> projet_ardouin 
+# projet_ardouin 
 
 ## L'organisation du dépot 
 
