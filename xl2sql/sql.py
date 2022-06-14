@@ -1,6 +1,7 @@
 import xlrd, sqlite3, pandas as pd, numpy as np, os
 from datetime import datetime, timedelta
 from sqlite3 import OperationalError
+from collections import Counter
 
 def ExecuteSQL(data_base_name,filename):
     db_run = sqlite3.connect(data_base_name)

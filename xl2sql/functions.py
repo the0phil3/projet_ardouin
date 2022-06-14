@@ -1,6 +1,8 @@
 import xlrd, sqlite3, pandas as pd, numpy as np, os
 from datetime import datetime, timedelta
 from sqlite3 import OperationalError
+from collections import Counter
+
 
 def Xlopen(sheetname):
     sheetname = pd.read_excel('~/dev/projet_ardouin/Ardouin La Totale.xls', sheetname, header=0)
@@ -50,7 +52,7 @@ def NomID(dataframe):
     return dataframe
 
 def ContenuID(dataframe):
-    dataframe['cID'] = dataframe.groupby(['nom', 'contenu', 'page', 'dateD', 'dateF']).ngroup()
+    dataframe['cID'] = np.where(dataframe['contenu'].isnull(), "N" + dataframe.groupby(['nom', 'page', 'dateD', 'dateF']).ngroup().astype(str), "C" + dataframe.groupby(['nom', 'contenu', 'page', 'dateD', 'dateF']).ngroup().astype(str))
     
     return dataframe
 
@@ -75,11 +77,11 @@ def Contenu_concat(*dataframes):
         dataframe = dataframe.drop(unwantedcol, inplace=True, axis=1)
         
     final = pd.concat([*dataframes])
-    final = final.drop_duplicates(subset=['nom', 'contenu', 'page', 'dateD', 'dateF'], keep='first')  
+    final = final.drop_duplicates(subset=['cID'], keep='first')  
     return final
     
 def Archive_concat(*dataframes):
-    unwantedcol = ['contenu','masque', 'type', 'nom', 'page','dateD', 'dateF']
+    unwantedcol = ['contenu','masque', 'type', 'nom', 'page','dateD', 'dateF', 'ssserie']
     for dataframe in dataframes:
         dataframe = dataframe.drop(unwantedcol, inplace=True, axis=1)
         
@@ -87,7 +89,7 @@ def Archive_concat(*dataframes):
     final = final.drop_duplicates(subset=['tome', 'f1', 'f2', 'f3', 'f4',
        'f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12', 'f13', 'f14', 'f15',
        'f16', 'f17', 'f18', 'f19', 'f20', 'f21', 'f22', 'f23', 'f24', 'f25',
-       'sserie', 'serie', 'ssserie', 'atl', 'mf'], keep='first')
+       'sserie', 'serie', 'atl', 'mf'], keep='first')
     return final
 
 
