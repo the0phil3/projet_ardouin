@@ -45,6 +45,7 @@ CREATE TABLE archives (
         f25 INTEGER,
         sserie INTEGER, 
         serie TEXT,
+        ssserie TEXT,
         atl INTEGER,
         mf INTEGER,
         ID TEXT NOT NULL,
@@ -52,4 +53,8 @@ CREATE TABLE archives (
         FOREIGN KEY(ID) REFERENCES ID(ID),
         FOREIGN KEY(cID) REFERENCES contenuID(cID)
         );
+        
+        
+        
+        
    

@@ -81,7 +81,7 @@ def Contenu_concat(*dataframes):
     return final
     
 def Archive_concat(*dataframes):
-    unwantedcol = ['contenu','masque', 'type', 'nom', 'page','dateD', 'dateF', 'ssserie']
+    unwantedcol = ['contenu','masque', 'type', 'nom', 'page','dateD', 'dateF']
     for dataframe in dataframes:
         dataframe = dataframe.drop(unwantedcol, inplace=True, axis=1)
         
@@ -89,7 +89,7 @@ def Archive_concat(*dataframes):
     final = final.drop_duplicates(subset=['tome', 'f1', 'f2', 'f3', 'f4',
        'f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12', 'f13', 'f14', 'f15',
        'f16', 'f17', 'f18', 'f19', 'f20', 'f21', 'f22', 'f23', 'f24', 'f25',
-       'sserie', 'serie', 'atl', 'mf'], keep='first')
+       'sserie', 'serie', 'ssserie', 'atl', 'mf'], keep='first')
     return final
 
 
