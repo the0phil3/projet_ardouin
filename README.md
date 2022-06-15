@@ -6,7 +6,7 @@
 
 **xl2sqlite** --> le traitement en `python` avec `pandas` et `sqlite3` des fiches excel (personnes, bateaux et affaires) du 2ème tome des tables ardouin pour les transformer en base de données relationnelles qui sera après transformée en `xml ead` 
 
-**Ardouin La Totale.xls** --> l'intégralité des tables ardouin transcrites en excel 
+**sources_excel** --> l'intégralité des tables ardouin transcrites en excel en différents formats et avec la table `xml` aussi 
 
 **xml_original** --> les fiches originales en xml ead qui sont utilisées sur le site du SHD
 
