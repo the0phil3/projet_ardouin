@@ -4,7 +4,7 @@
 
 **tables numérisées/1701-1705**  --> les pages numérisées du 2ème tome de tables ardouin, qui traite de la correspondence de 1701-1705
 
-**xl2sql** --> le traitement en `python` avec `pandas` et `sqlite3` des fiches excel (personnes, bateaux et affaires) du 2ème tome des tables ardouin pour les transformer en base de données relationnelles lisible par libre office base (format .db)
+**xl2sqlite** --> le traitement en `python` avec `pandas` et `sqlite3` des fiches excel (personnes, bateaux et affaires) du 2ème tome des tables ardouin pour les transformer en base de données relationnelles qui sera après transformée en `xml ead` 
 
 **Ardouin La Totale.xls** --> l'intégralité des tables ardouin transcrites en excel 
 
