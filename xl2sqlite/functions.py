@@ -20,7 +20,8 @@ def Xlclean(dataframe):
                                'Date début':'dateD', 'Date fin':'dateF',},inplace=True)
     dataframe.dateD = pd.to_datetime(dataframe.dateD, format='%Y')
     dataframe.dateF = pd.to_datetime(dataframe.dateF, format='%Y')
-    dataframe.dateF = dataframe.dateF.apply(lambda x: datetime(x.year, 12, 31))
+    dataframe.dateD = dataframe.dateD.apply(lambda x: datetime(x.year, 1, 2))
+    dataframe.dateF = dataframe.dateF.apply(lambda x: datetime(1+x.year, 1, 1))
         
     return dataframe
 
