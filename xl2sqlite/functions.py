@@ -25,6 +25,20 @@ def Xlclean(dataframe):
         
     return dataframe
 
+def Totalclean(dataframe):
+    dataframe.columns = [x.replace('Folio ','f') for x in dataframe.columns]
+    dataframe.rename(columns = {'Masque de saisie':'masque', 'Page Ardouin':'page', 
+                               'Intitulé / analyse\nNom lieu\nNom personne\nAffaires diverses':'nom', 
+                               'Présentation du contenu':'contenu',
+                               'N° de TOME':'tome', 'Sous-série':'sserie',
+                               'Série':'serie', 'Sous-sous-série':'ssserie',
+                               'Article':'atl', 'Microfilm MI':'mf',
+                               'Date':'dateD',},inplace=True)
+    
+    dataframe['dateF'] = dataframe['dateD']
+    
+    return dataframe
+
 def Type_column(dataframe, categorie):
     if categorie == "personnes":
         dataframe["type"] = "P"
@@ -74,7 +88,6 @@ def Contenu_concat(*dataframes):
     return final
     
 def Archive_concat(*dataframes):
-    unwantedcol = ['contenu','masque', 'type', 'nom', 'page','dateD', 'dateF']
     for dataframe in dataframes:
         dataframe = dataframe.drop(dataframe.columns.difference(['tome', 'f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10','f11', 'f12', 'f13', 'f14', 'f15', 'f16', 'f17', 'f18', 'f19', 'f20',
        'f21', 'f22', 'f23', 'f24', 'f25', 'sserie', 'serie', 'ssserie', 'atl',
