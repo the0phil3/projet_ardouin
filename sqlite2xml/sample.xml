@@ -1,4 +1,4 @@
-<c level="item">  
+<c level="item" id = "MR1E44">  
     <did>  
         <unitid type="cote">MR 1E44 (Microfilm MR MI 7), folio 67</unitid> 
         <unittitle>Aix, Île d'</unittitle>  
@@ -11,7 +11,7 @@
           <p>Tables Ardouin, tome 2, page 241</p>  
     </scopecontent>  
     <controlaccess> 
-        <function>Affaire</function>  
+        <function>Affaires diverses</function>  
         <name id="A7">Aix, Île d'</name>  
         <subject id="C213">
             Supplique des habittants de l'Île d'Aix à l'intendant Bégon pour le prier de  ne pas
