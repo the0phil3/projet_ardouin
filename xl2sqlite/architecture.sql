@@ -3,21 +3,10 @@ CREATE TABLE master (
         type TEXT NOT NULL,
         ID TEXT PRIMARY KEY
         );
-   
-CREATE TABLE contents (
-        nom TEXT,
-        page INTEGER,
-        contenu TEXT,
-        dateD INTEGER,
-        dateF INTEGER,    
-        ID TEXT NOT NULL,
-        cID TEXT PRIMARY KEY,
-        FOREIGN KEY(nom) REFERENCES nom(nom),
-        FOREIGN KEY(ID) REFERENCES ID(ID)
-        );
         
-CREATE TABLE archives (
-        tome TEXT,
+CREATE TABLE did (
+        dateD INTEGER,
+        dateF INTEGER,
         f1 INTEGER, 
         f2 INTEGER,
         f3 INTEGER,
@@ -53,6 +42,19 @@ CREATE TABLE archives (
         FOREIGN KEY(ID) REFERENCES ID(ID),
         FOREIGN KEY(cID) REFERENCES contenuID(cID)
         );
+   
+CREATE TABLE scopecontent (
+        nom TEXT,
+        tome TEXT,
+        page INTEGER,
+        contenu TEXT,    
+        ID TEXT NOT NULL,
+        cID TEXT PRIMARY KEY,
+        FOREIGN KEY(nom) REFERENCES nom(nom),
+        FOREIGN KEY(ID) REFERENCES ID(ID)
+        );
+        
+
         
         
         

@@ -81,7 +81,7 @@ def Master_concat(*dataframes):
 
 def Contenu_concat(*dataframes):
     for dataframe in dataframes:
-        dataframe = dataframe.drop(dataframe.columns.difference(['page', 'nom', 'contenu', 'dateD', 'dateF', 'ID', 'cID']), 1, inplace=True)
+        dataframe = dataframe.drop(dataframe.columns.difference(['page', 'tome', 'nom', 'contenu', 'ID', 'cID']), 1, inplace=True)
         
     final = pd.concat([*dataframes])
     final = final.drop_duplicates(subset=['cID'], keep='first')  
@@ -89,12 +89,12 @@ def Contenu_concat(*dataframes):
     
 def Archive_concat(*dataframes):
     for dataframe in dataframes:
-        dataframe = dataframe.drop(dataframe.columns.difference(['tome', 'f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10','f11', 'f12', 'f13', 'f14', 'f15', 'f16', 'f17', 'f18', 'f19', 'f20',
+        dataframe = dataframe.drop(dataframe.columns.difference(['dateD', 'dateF','f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10','f11', 'f12', 'f13', 'f14', 'f15', 'f16', 'f17', 'f18', 'f19', 'f20',
        'f21', 'f22', 'f23', 'f24', 'f25', 'sserie', 'serie', 'ssserie', 'atl',
        'mf', 'ID', 'cID']), 1, inplace=True)
         
     final = pd.concat([*dataframes])
-    final = final.drop_duplicates(subset=['tome', 'f1', 'f2', 'f3', 'f4',
+    final = final.drop_duplicates(subset=['f1', 'f2', 'f3', 'f4',
        'f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12', 'f13', 'f14', 'f15',
        'f16', 'f17', 'f18', 'f19', 'f20', 'f21', 'f22', 'f23', 'f24', 'f25',
        'sserie', 'serie', 'ssserie', 'atl', 'mf'], keep='first')
