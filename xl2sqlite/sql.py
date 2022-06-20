@@ -31,4 +31,5 @@ def FillTables(data_base_name, *dataframes, titles):
     c = db_run.cursor()
     for dataframe, title in zip(dataframes, titles):
         dataframe.to_sql(title, db_run, if_exists='append', index=False)
+    db_run.commit()
     db_run.close()

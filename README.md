@@ -12,6 +12,8 @@
 
 **essai2recherche** --> les microfilmes numerisées et photos des support d'archives que j'ai consulté lors d'un essai de recherche où j'ai comparé ma base de données, l'information sur internet et les fiches excel pour trouver la première entrée sur M. Petit (mf 7, SHD MR 1 E 44, folii 256, 323) (ID = 'P1049' , cID = 'C2162')
 
+**sqlite2xml** --> les fiches xml provenant de la base de données sql `final.db` 
+
 
 ## Description 
 Dans le cadre de mon stage de master d'humanités numériques, je participe à un travail de harmonisation, de fluidification et de remaniement du projet des [tables ardouin](https://www.servicehistorique.sga.defense.gouv.fr/ressources/les-tables-ardouin) porté par le SHD de Rochefort.  

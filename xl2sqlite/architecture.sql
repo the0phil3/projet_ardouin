@@ -1,10 +1,11 @@
 CREATE TABLE master (
-        nom TEXT NOT NULL,
-        type TEXT NOT NULL,
+        unittitle TEXT NOT NULL,
+        function TEXT NOT NULL,
         ID TEXT PRIMARY KEY
         );
         
 CREATE TABLE did (
+        unittitle TEXT,
         dateD INTEGER,
         dateF INTEGER,
         f1 INTEGER, 
@@ -39,20 +40,27 @@ CREATE TABLE did (
         mf INTEGER,
         ID TEXT NOT NULL,
         cID TEXT NOT NULL,
-        FOREIGN KEY(ID) REFERENCES ID(ID),
-        FOREIGN KEY(cID) REFERENCES contenuID(cID)
+        FOREIGN KEY(ID) REFERENCES master(ID),
+        FOREIGN KEY(cID) REFERENCES scopecontent(cID)
         );
    
 CREATE TABLE scopecontent (
-        nom TEXT,
+        contenu TEXT, 
         tome TEXT,
-        page INTEGER,
-        contenu TEXT,    
+        page INTEGER,   
         ID TEXT NOT NULL,
         cID TEXT PRIMARY KEY,
-        FOREIGN KEY(nom) REFERENCES nom(nom),
-        FOREIGN KEY(ID) REFERENCES ID(ID)
+        FOREIGN KEY(ID) REFERENCES master(ID)
         );
+        
+CREATE TABLE controlaccess (
+        function TEXT NOT NULL,
+        name TEXT,
+        subject INTEGER,   
+        FOREIGN KEY(name) REFERENCES master(ID),
+        FOREIGN KEY(subject) REFERENCES scopecontent(cID)
+        );
+
         
 
         

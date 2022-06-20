@@ -12,7 +12,7 @@ def Xlopen(sheetname):
 def Xlclean(dataframe):
     dataframe.columns = [x.replace('Folio ','f') for x in dataframe.columns]
     dataframe.rename(columns = {'Masque de saisie':'masque', 'Page Ardouin':'page', 
-                               'Intitulé / analyse\nNom lieu\nNom personne\nAffaires diverses':'nom', 
+                               'Intitulé / analyse\nNom lieu\nNom personne\nAffaires diverses':'unittitle', 
                                'Présentation du contenu':'contenu',
                                'Ancienne cote\nN° de TOME':'tome', 'Sous-série':'sserie',
                                'Série':'serie', 'Sous-sous-série':'ssserie',
@@ -28,7 +28,7 @@ def Xlclean(dataframe):
 def Totalclean(dataframe):
     dataframe.columns = [x.replace('Folio ','f') for x in dataframe.columns]
     dataframe.rename(columns = {'Masque de saisie':'masque', 'Page Ardouin':'page', 
-                               'Intitulé / analyse\nNom lieu\nNom personne\nAffaires diverses':'nom', 
+                               'Intitulé / analyse\nNom lieu\nNom personne\nAffaires diverses':'unittitle', 
                                'Présentation du contenu':'contenu',
                                'N° de TOME':'tome', 'Sous-série':'sserie',
                                'Série':'serie', 'Sous-sous-série':'ssserie',
@@ -41,47 +41,47 @@ def Totalclean(dataframe):
 
 def Type_column(dataframe, categorie):
     if categorie == "personnes":
-        dataframe["type"] = "P"
+        dataframe["function"] = "Personne"
     if categorie == "bateaux":
-        dataframe["type"] = "B"
+        dataframe["function"] = "Bateau"
     if categorie == "affaires":
-        dataframe["type"] = "A"
+        dataframe["function"] = "Affaire"
     return dataframe
 
 def NomID(dataframe):
-    person = dataframe['type'] == "P"
-    boat = dataframe['type'] == "B"
-    affaires = dataframe['type'] == "A"
+    person = dataframe['function'] == "Personne"
+    boat = dataframe['function'] == "Bateau"
+    affaires = dataframe['function'] == "Affaire"
     if person.any():
-        dataframe['ID'] = dataframe.groupby(['nom','type']).ngroup()
-        dataframe['ID'] = dataframe['type'] + dataframe['ID'].astype(str)
+        dataframe['ID'] = dataframe.groupby(['unittitle','function']).ngroup()
+        dataframe['ID'] = "P" + dataframe['ID'].astype(str)
     
     if boat.any():
-        dataframe['ID'] = dataframe.groupby(['nom','type']).ngroup()
-        dataframe['ID'] = dataframe['type'] + dataframe['ID'].astype(str)
+        dataframe['ID'] = dataframe.groupby(['unittitle','function']).ngroup()
+        dataframe['ID'] = "B" + dataframe['ID'].astype(str)
         
     if affaires.any():
-        dataframe['ID'] = dataframe.groupby(['nom','type']).ngroup()
-        dataframe['ID'] = dataframe['type'] + dataframe['ID'].astype(str)
+        dataframe['ID'] = dataframe.groupby(['unittitle','function']).ngroup()
+        dataframe['ID'] = "A" + dataframe['ID'].astype(str)
     
     return dataframe
 
 def ContenuID(dataframe):
-    dataframe['cID'] = np.where(dataframe['contenu'].isnull(), "N" + dataframe.groupby(['nom', 'page', 'dateD', 'dateF']).ngroup().astype(str), "C" + dataframe.groupby(['nom', 'contenu', 'page', 'dateD', 'dateF']).ngroup().astype(str))
+    dataframe['cID'] = np.where(dataframe['contenu'].isnull(), "N" + dataframe.groupby(['unittitle', 'page', 'dateD', 'dateF']).ngroup().astype(str), "C" + dataframe.groupby(['unittitle', 'contenu', 'page', 'dateD', 'dateF']).ngroup().astype(str))
     
     return dataframe
 
 def Master_concat(*dataframes):
     for dataframe in dataframes:
-        dataframe = dataframe.drop(dataframe.columns.difference(['nom', 'type', 'ID']), 1, inplace=True)
+        dataframe = dataframe.drop(dataframe.columns.difference(['unittitle', 'function', 'ID']), 1, inplace=True)
         
     final = pd.concat([*dataframes])
-    final = final.drop_duplicates(subset=['nom', 'type', 'ID'], keep='first')
+    final = final.drop_duplicates(subset=['unittitle', 'function', 'ID'], keep='first')
     return final
 
 def Contenu_concat(*dataframes):
     for dataframe in dataframes:
-        dataframe = dataframe.drop(dataframe.columns.difference(['page', 'tome', 'nom', 'contenu', 'ID', 'cID']), 1, inplace=True)
+        dataframe = dataframe.drop(dataframe.columns.difference(['page', 'tome', 'contenu', 'ID', 'cID']), 1, inplace=True)
         
     final = pd.concat([*dataframes])
     final = final.drop_duplicates(subset=['cID'], keep='first')  
@@ -89,7 +89,7 @@ def Contenu_concat(*dataframes):
     
 def Archive_concat(*dataframes):
     for dataframe in dataframes:
-        dataframe = dataframe.drop(dataframe.columns.difference(['dateD', 'dateF','f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10','f11', 'f12', 'f13', 'f14', 'f15', 'f16', 'f17', 'f18', 'f19', 'f20',
+        dataframe = dataframe.drop(dataframe.columns.difference(['unittitle','dateD', 'dateF','f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10','f11', 'f12', 'f13', 'f14', 'f15', 'f16', 'f17', 'f18', 'f19', 'f20',
        'f21', 'f22', 'f23', 'f24', 'f25', 'sserie', 'serie', 'ssserie', 'atl',
        'mf', 'ID', 'cID']), 1, inplace=True)
         
@@ -98,6 +98,14 @@ def Archive_concat(*dataframes):
        'f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12', 'f13', 'f14', 'f15',
        'f16', 'f17', 'f18', 'f19', 'f20', 'f21', 'f22', 'f23', 'f24', 'f25',
        'sserie', 'serie', 'ssserie', 'atl', 'mf'], keep='first')
+    return final
+
+def Control_concat(*dataframes):
+    for dataframe in dataframes:
+        dataframe = dataframe.drop(dataframe.columns.difference(['function', 'unittitle', 'contenu']), 1, inplace=True)
+        
+    final = pd.concat([*dataframes])
+    final.rename(columns = {'unittitle':'name', 'contenu' : 'subject',}, inplace=True)
     return final
 
 
