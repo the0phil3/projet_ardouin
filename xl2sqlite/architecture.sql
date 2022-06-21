@@ -6,8 +6,8 @@ CREATE TABLE master (
         
 CREATE TABLE did (
         unittitle TEXT,
-        dateD INTEGER,
-        dateF INTEGER,
+        dateD BLOB,
+        dateF BLOB,
         f1 INTEGER, 
         f2 INTEGER,
         f3 INTEGER,
@@ -46,7 +46,6 @@ CREATE TABLE did (
         );
    
 CREATE TABLE scopecontent (
-        contenu TEXT, 
         tome TEXT,
         page INTEGER,   
         ID TEXT NOT NULL,

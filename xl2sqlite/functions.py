@@ -86,7 +86,7 @@ def Master_concat(*dataframes):
 
 def Contenu_concat(*dataframes):
     for dataframe in dataframes:
-        dataframe = dataframe.drop(dataframe.columns.difference(['page', 'tome', 'contenu', 'ID', 'cID']), 1, inplace=True)
+        dataframe = dataframe.drop(dataframe.columns.difference(['page', 'tome', 'ID', 'cID']), 1, inplace=True)
         
     final = pd.concat([*dataframes])
     final = final.drop_duplicates(subset=['cID'], keep='first')  
