@@ -55,10 +55,12 @@ CREATE TABLE scopecontent (
         
 CREATE TABLE controlaccess (
         function TEXT NOT NULL,
-        name TEXT,
-        subject INTEGER,   
-        FOREIGN KEY(name) REFERENCES master(ID),
-        FOREIGN KEY(subject) REFERENCES scopecontent(cID)
+        unittitle TEXT,
+        contenu INTEGER,
+        ID TEXT NOT NULL,
+        cID TEXT NOT NULL,
+        FOREIGN KEY(ID) REFERENCES master(ID),
+        FOREIGN KEY(cID) REFERENCES scopecontent(cID)
         );
 
         

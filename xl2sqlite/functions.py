@@ -102,10 +102,9 @@ def Archive_concat(*dataframes):
 
 def Control_concat(*dataframes):
     for dataframe in dataframes:
-        dataframe = dataframe.drop(dataframe.columns.difference(['function', 'unittitle', 'contenu']), 1, inplace=True)
+        dataframe = dataframe.drop(dataframe.columns.difference(['function', 'unittitle', 'contenu', 'ID', 'cID']), 1, inplace=True)
         
     final = pd.concat([*dataframes])
-    final.rename(columns = {'unittitle':'name', 'contenu' : 'subject',}, inplace=True)
     return final
 
 
