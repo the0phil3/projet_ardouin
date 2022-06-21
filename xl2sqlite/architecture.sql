@@ -33,13 +33,14 @@ CREATE TABLE did (
         f23 INTEGER,
         f24 INTEGER,
         f25 INTEGER,
-        sserie INTEGER, 
+        sserie TEXT, 
         serie TEXT,
-        ssserie TEXT,
+        ssserie INTEGER,
         atl INTEGER,
         mf INTEGER,
         ID TEXT NOT NULL,
         cID TEXT NOT NULL,
+        aID BLOB NOT NULL,
         FOREIGN KEY(ID) REFERENCES master(ID),
         FOREIGN KEY(cID) REFERENCES scopecontent(cID)
         );

@@ -71,6 +71,11 @@ def ContenuID(dataframe):
     
     return dataframe
 
+def ArchivesID(dataframe):
+    dataframe['aID'] = np.where(dataframe['ssserie'].isnull(), "MR" + dataframe['sserie'].astype(str) + dataframe['serie'].astype(str) + dataframe['atl'].astype(str), "MR" + dataframe['sserie'].astype(str) + dataframe['serie'].astype(str) + dataframe['ssserie'].astype(str) + dataframe['atl'].astype(str))
+    
+    return dataframe
+ 
 def Master_concat(*dataframes):
     for dataframe in dataframes:
         dataframe = dataframe.drop(dataframe.columns.difference(['unittitle', 'function', 'ID']), 1, inplace=True)
