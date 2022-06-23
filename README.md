@@ -2,17 +2,11 @@
 
 ## L'organisation du dépot 
 
-**tables numérisées/1701-1705**  --> les pages numérisées du 2ème tome de tables ardouin, qui traite de la correspondence de 1701-1705
+**sources** --> l'intégralité des tables ardouin en pdf (numérisées), en excel et en `xml` 
 
-**xl2sqlite** --> le traitement en `python` avec `pandas` et `sqlite3` des fiches excel (personnes, bateaux et affaires) du 2ème tome des tables ardouin pour les transformer en base de données relationnelles qui sera après transformée en `xml ead` 
+**xl2sqlite** --> le traitement en `python` avec `pandas` et `sqlite3` des fiches excel (personnes, bateaux et affaires) du 2ème tome des tables ardouin pour les transformer en base de données relationnelles qui sera après transformée en `xml ead`
 
-**sources_excel** --> l'intégralité des tables ardouin transcrites en excel en différents formats et avec la table `xml` aussi 
-
-**xml_original** --> les fiches originales en xml ead qui sont utilisées sur le site du SHD
-
-**essai2recherche** --> les microfilmes numerisées et photos des support d'archives que j'ai consulté lors d'un essai de recherche où j'ai comparé ma base de données, l'information sur internet et les fiches excel pour trouver la première entrée sur M. Petit (mf 7, SHD MR 1 E 44, folii 256, 323) (ID = 'P1049' , cID = 'C2162')
-
-**sqlite2xml** --> les fiches xml provenant de la base de données sql `final.db` 
+**sqlite2xml** --> le dossier pour le traitement de la base en `xml ead` avec les fiches xml extraites de la base de données sql `final.db` par DBeaver
 
 
 ## Description 
@@ -22,7 +16,9 @@ Les tables ardouin sont un index fait par le docteur Ardouin, un ancien officier
 
 ## Attentes
 J'espère pouvoir effectuer ces améliorations ou au moins établir une méthodologie pour y arriver : 
-- transformation d'excel en base de données `sqlite` qui pourrait être lu par libre office base
-- encodage de cette base en `xml ead` 
-- faire le lien entre l'entrée de l'index et le microfilm numérisé
-- essayer de lématiser et normaliser les entrées afin de favoriser des requêtes profondes et efficaces 
+- La création d’une base de données relationnelle qui pourrait permettre un encodage en XML plus complexe 
+- La normalisation des noms (l’information dans `<unittitle>`)
+- La continuation de la base avec l’index des tables machin
+- Faire la liaison entre l’entrée dans l’index et le microfilm numérisé
+- La reconnaissance des entités nommées par apprentissage machine
+ 
