@@ -46,8 +46,9 @@ CREATE TABLE did (
         );
    
 CREATE TABLE scopecontent (
+        contenu TEXT,
         tome TEXT,
-        page INTEGER,   
+        page INTEGER, 
         ID TEXT NOT NULL,
         cID TEXT PRIMARY KEY,
         FOREIGN KEY(ID) REFERENCES master(ID)
@@ -55,8 +56,6 @@ CREATE TABLE scopecontent (
         
 CREATE TABLE controlaccess (
         function TEXT NOT NULL,
-        unittitle TEXT,
-        contenu INTEGER,
         ID TEXT NOT NULL,
         cID TEXT NOT NULL,
         FOREIGN KEY(ID) REFERENCES master(ID),

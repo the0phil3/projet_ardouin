@@ -5,16 +5,13 @@
         <unitdate normal="1697-01-01/1697-01-01"> 1701</unitdate>  
     </did>  
     <scopecontent>  
-          <p>Tables Ardouin, tome 2, page 241</p>  
+         <p>Supplique des habittants de l'Île d'Aix à l'intendant Bégon pour le prier de  ne pas
+            établir de bureau de ferme dans leur île peu fertile et d'un accès  souvent difficile,
+            le Roi les avait exemptés de toute charge.</p>  
+        <p>Tables Ardouin, tome 2, page 241</p>
     </scopecontent>  
     <controlaccess> 
-        <function>Affaires diverses</function>  
-        <name id="A7">Aix, Île d'</name>  
-        <geogname>L'Île d'Aix</geogname>
-        <subject id="C213">
-            Supplique des habittants de l'Île d'Aix à l'intendant Bégon pour le prier de  ne pas
-            établir de bureau de ferme dans leur île peu fertile et d'un accès  souvent difficile,
-            le Roi les avait exemptés de toute charge.
-        </subject>  
+        <geogname id="A7">L'Île d'Aix</geogname>
+        <subject id="C213">Affaires diverses</subject>  
     </controlaccess>  
 </c>
