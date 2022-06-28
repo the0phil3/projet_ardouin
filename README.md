@@ -18,7 +18,7 @@ Les tables ardouin sont un index fait par le docteur Ardouin, un ancien officier
 J'espère pouvoir effectuer ces améliorations ou au moins établir une méthodologie pour y arriver : 
 - La création d’une base de données relationnelle qui pourrait permettre un encodage en XML plus complexe 
 - La normalisation des noms (l’information dans `<unittitle>`)
-- La continuation de la base avec l’index des tables machin
+- La continuation de la base avec l’index des fiches Descubes
 - Faire la liaison entre l’entrée dans l’index et le microfilm numérisé
 - La reconnaissance des entités nommées par apprentissage machine
  
