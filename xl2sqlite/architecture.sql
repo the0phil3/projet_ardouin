@@ -6,8 +6,8 @@ CREATE TABLE master (
         
 CREATE TABLE did (
         unittitle TEXT,
-        dateD BLOB,
-        dateF BLOB,
+        dateD TEXT,
+        dateF TEXT,
         f1 INTEGER, 
         f2 INTEGER,
         f3 INTEGER,
@@ -40,7 +40,7 @@ CREATE TABLE did (
         mf INTEGER,
         ID TEXT NOT NULL,
         cID TEXT NOT NULL,
-        aID BLOB NOT NULL,
+        aID TEXT NOT NULL,
         FOREIGN KEY(ID) REFERENCES master(ID),
         FOREIGN KEY(cID) REFERENCES scopecontent(cID)
         );

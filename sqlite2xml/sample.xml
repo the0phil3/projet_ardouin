@@ -8,10 +8,11 @@
          <p>Supplique des habittants de l'Île d'Aix à l'intendant Bégon pour le prier de  ne pas
             établir de bureau de ferme dans leur île peu fertile et d'un accès  souvent difficile,
             le Roi les avait exemptés de toute charge.</p>  
-        <p>Tables Ardouin, tome 2, page 241</p>
     </scopecontent>  
+    <custodhist> 
+        <p>Tables Ardouin, tome 2, page 241</p>
+    </custodhist>
     <controlaccess> 
-        <geogname id="A7">L'Île d'Aix</geogname>
         <subject id="C213">Affaires diverses</subject>  
     </controlaccess>  
 </c>
