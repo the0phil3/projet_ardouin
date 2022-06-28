@@ -19,9 +19,6 @@
           <xsl:for-each select="$entry">
               <xsl:element name="c">
                   <xsl:attribute name="level">item</xsl:attribute>
-                  <xsl:attribute name="id">
-                      <xsl:apply-templates select="aID"/>
-                  </xsl:attribute>
                   
                   <xsl:element name="did">
                       <xsl:element name="unitid">
@@ -155,9 +152,6 @@
                   
                   <xsl:element name="controlaccess">
                       <xsl:element name="subject">
-                          <xsl:attribute name="id">
-                              <xsl:apply-templates select="cID"/>
-                          </xsl:attribute>
                           <xsl:apply-templates select="function"/>
                       </xsl:element>
                   </xsl:element>
