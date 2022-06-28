@@ -72,7 +72,9 @@ def ContenuID(dataframe):
     return dataframe
 
 def ArchivesID(dataframe):
-    dataframe['aID'] = np.where(dataframe['ssserie'].isnull(), "MR" + dataframe['sserie'].astype(str) + dataframe['serie'].astype(str) + dataframe['atl'].astype(str), "MR" + dataframe['sserie'].astype(str) + dataframe['serie'].astype(str) + dataframe['ssserie'].astype(str) + dataframe['atl'].astype(str))
+    dataframe['atl'] = dataframe['atl'].astype(int)
+    
+    dataframe['aID'] = np.where(dataframe['ssserie'].isnull(), "MR" + dataframe['sserie'].astype(str) + dataframe['serie'].astype(str) + dataframe['atl'].round().astype(str), "MR" + dataframe['sserie'].astype(str) + dataframe['serie'].astype(str) + dataframe['ssserie'].astype(str) + dataframe['atl'].round().astype(str))
     
     return dataframe
  
