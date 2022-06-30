@@ -8,6 +8,8 @@
 
 **sqlite2xml** --> le dossier pour le traitement de la base en `xml ead` avec les fiches xml extraites de la base de données sql `final.db` par DBeaver
 
+**bases utilisables** --> base final en format excel avec des macros recherches pour l'équipe du SHD et aussi en format sqlite pour l'équipe de transformation numérique 
+
 
 ## Description 
 Dans le cadre de mon stage de master d'humanités numériques, je participe à un travail de harmonisation, de fluidification et de remaniement du projet des [tables ardouin](https://www.servicehistorique.sga.defense.gouv.fr/ressources/les-tables-ardouin) porté par le SHD de Rochefort.  
